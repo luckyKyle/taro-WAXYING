@@ -21,16 +21,13 @@ export default class Index extends Component {
 
   _fetchData() {
     Taro.showLoading({ title: '加载中' })
-    console.log(api)
-    api.getBanner().then(res => {
+    api.getBanner().then(data => {
+      console.log(data)
       Taro.hideLoading()
-      if (res.statusCode === 200) {
-        const data = res.data
-        this.setState({
-          banners: data.banners,
-          loading: false
-        })
-      }
+      this.setState({
+        banners: data.banners,
+        loading: false
+      })
     })
   }
 

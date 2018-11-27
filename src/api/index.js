@@ -1,12 +1,5 @@
-import {
-  HOST
-} from './config'
-import Taro from '@tarojs/taro'
-
+import fly from './fly'
 export default {
-
   // 获取banner
-  getBanner: (params) => Taro.request({
-    url: HOST + 'banner'
-  })
+  getBanner: (params) => fly.get('banner')
 }
