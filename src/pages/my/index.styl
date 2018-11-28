@@ -61,6 +61,9 @@
   .item
     font-size 0
     padding 15rpx
+    &:last-of-type
+      &:after
+        display none
     .image-wrapper, .desc-wrapper
       display inline-block
       vertical-align top
@@ -74,8 +77,10 @@
         max-width 100%
     .desc-wrapper
       line-height 40rpx
+      width 625rpx
       .text
         font-size $font-size-medium
         display block
       .count
         color $color-text-l
+        font-size $font-size-small

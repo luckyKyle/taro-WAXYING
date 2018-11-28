@@ -76,7 +76,7 @@ export default class Index extends Component {
         <View className='disc-title'>我创建的歌单</View>
         <View className='disc-list'>
           {this.state.userCreatedDiscList.map(item => (
-            <View key={item.id} className='item'>
+            <View key={item.id} className='item  border-bottom-1px'>
               <View className='image-wrapper'>
                 <Image src={item.coverImgUrl} alt='' lazy-load mode='widthFix' className='img' />
               </View>
@@ -91,7 +91,7 @@ export default class Index extends Component {
         <View className='disc-title'>我收藏的歌单</View>
         <View className='disc-list'>
           {this.state.userFavoriteDiscList.map(item => (
-            <View key={item.id} className='item'>
+            <View key={item.id} className='item border-bottom-1px'>
               <View className='image-wrapper'>
                 <Image src={item.coverImgUrl} alt='' lazy-load mode='aspectFill' className='img' />
               </View>
