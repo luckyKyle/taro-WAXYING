@@ -7,5 +7,9 @@ export default {
   getPersonalized: (params) => fly.get('personalized'),
 
   // 获取推荐歌单
-  getNewsong: (params) => fly.get('personalized/newsong')
+  getNewsong: (params) => fly.get('personalized/newsong'),
+
+
+  // 获取推荐歌单
+  getToplist: (params) => fly.get('toplist')
 }

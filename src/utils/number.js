@@ -224,28 +224,41 @@ export function formatMaxNum(number, decimals = 2, roundType = '') {
 
   const n = formatNum(num, decimals, roundType)
 
-  // if (gt(n, 100000000)) {
-  //   return `${formatMoney(div(n, 100000000), decimals, roundType)}亿`
-  // }
-
-  // if (gt(n, 10000000)) {
-  //   return `${formatMoney(div(n, 10000000), decimals, roundType)}千万`
-  // }
-
-  // if (gt(n, 1000000)) {
-  //   return `${formatMoney(div(n, 1000000), decimals, roundType)}百万`
-  // }
-
-  // if (gt(n, 100000)) {
-  //   return `${formatMoney(div(n, 100000), decimals, roundType)}十万`
-  // }
-
-  if (gt(n, 10000)) {
-    return `${formatMoney(div(n, 10000), decimals, roundType)}万`
+  if (gt(n, 1e8)) {
+    return `${formatMoney(div(n, 1e8), decimals, roundType)}亿`
   }
-  // if (gt(n, 1000)) {
-  //   return `${formatMoney(div(n, 1000), decimals, roundType)}千`
-  // }
+
+  if (gt(n, 1e7)) {
+    return `${formatMoney(div(n, 1e7), decimals, roundType)}千万`
+  }
+
+  if (gt(n, 1e6)) {
+    return `${formatMoney(div(n, 1e6), decimals, roundType)}百万`
+  }
+
+  if (gt(n, 1e5)) {
+    return `${formatMoney(div(n, 1e5), decimals, roundType)}十万`
+  }
+
+  if (gt(n, 1e4)) {
+    return `${formatMoney(div(n, 1e4), decimals, roundType)}万`
+  }
+  if (gt(n, 1e3)) {
+    return `${formatMoney(div(n, 1e3), decimals, roundType)}千`
+  }
 
   return `${formatMoney(div(n, 1), decimals, roundType)}`
+}
+
+// 转换大数
+export const parseLargeNumber = (num, type = 1) => {
+  if (num === 0) {
+    return formatMoney(num)
+  }
+  switch (type) {
+    case 1: // 比较是否过亿
+      return gt(num, 1e8) ? formatMoney(div(num, 1e8)) + '亿' : formatMoney(div(num, 1e4)) + '万'
+    case 2: // 比较是否过万
+      return gt(num, 1e4) ? formatMoney(div(num, 1e4)) + '万' : formatMoney(num)
+  }
 }

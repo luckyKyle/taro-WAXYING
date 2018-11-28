@@ -2,7 +2,6 @@ import { HOST, ERR_OK } from './config'
 const Fly = require('flyio/dist/npm/wx') // wx.js为flyio的微信小程序入口文件
 const fly = new Fly() // 创建fly实例
 
-
 export function showNormal(text) {
   wx.showToast({
     title: text,

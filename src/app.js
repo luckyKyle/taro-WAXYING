@@ -11,7 +11,13 @@ import './common/stylus/index.styl'
 
 class App extends Component {
   config = {
-    pages: ['pages/recommend/index', 'pages/rank/index', 'pages/search/index', 'pages/my/index'],
+    pages: [
+      'pages/recommend/index',
+      'pages/rank/index',
+      'pages/video/index',
+      'pages/my/index',
+      'pages/search/index'
+    ],
     window: {
       backgroundTextStyle: 'light',
       backgroundColor: '#d81e06',
@@ -34,13 +40,13 @@ class App extends Component {
         },
         {
           pagePath: 'pages/rank/index',
-          text: '热歌榜',
+          text: '排行榜',
           iconPath: 'static/images/tab-rank-blur.png',
           selectedIconPath: 'static/images/tab-rank.png'
         },
         {
-          pagePath: 'pages/search/index',
-          text: '搜索',
+          pagePath: 'pages/video/index',
+          text: '视频',
           iconPath: 'static/images/tab-search-blur.png',
           selectedIconPath: 'static/images/tab-search.png'
         },

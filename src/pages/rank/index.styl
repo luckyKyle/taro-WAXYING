@@ -1,0 +1,58 @@
+@import '../../common/stylus/variable'
+@import '../../common/stylus/mixin'
+.rank
+  padding-top 15rpx
+.title
+  font-size $font-size-medium-x
+  padding 0 15rpx
+  margin-bottom 15rpx
+.list
+  display flex
+  width 100%
+  flex-wrap wrap
+  margin-bottom 15rpx
+  padding-left 15rpx
+  box-sizing border-box
+  .item
+    flex 0 0 33.333333%
+    width 33.333333%
+    padding-right 15rpx
+    box-sizing border-box
+    overflow hidden
+    margin-bottom 15rpx
+    font-size $font-size-small
+    .image-wrapper
+      position relative
+      padding-bottom 100%
+      box-sizing border-box
+      border-radius 8rpx
+      overflow hidden
+      &:after
+        content ' '
+        position absolute
+        left 0
+        bottom 0
+        right 0
+        height 40rpx
+        z-index 2
+        background-image linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.25))
+      .img
+        position absolute
+        width 100%
+        max-height 240rpx
+        vertical-align middle
+        left 0
+        top 0
+        z-index 1
+      .update
+        position absolute
+        z-index 3
+        left 6rpx
+        bottom 6rpx
+        color $color-background
+    .text
+      mult_line_ellipsis()
+      text-justify justify-content
+      padding 4rpx 2rpx 0 6rpx
+      line-height 1.2
+      font-size $font-size-small

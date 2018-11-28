@@ -18,8 +18,15 @@ export default class Index extends Component {
   componentDidHide() {}
   render() {
     return (
-      <View className='index'>
-        <Text>我的</Text>
+      <View className='my'>
+        <View className='my-info-wrapper'>
+          <View className='my-info'>
+            <View>
+              <Image src='' />
+            </View>
+            <Text>用户名</Text>
+          </View>
+        </View>
       </View>
     )
   }
