@@ -3,7 +3,79 @@
 .my-info-wrapper
   position relative
   background $color-theme
-  height 200rpx
+  height 120rpx
+  overflow visible
   .my-info
-    position absolute
-    background $color-text-ll
+    pos-x()
+    bottom -30rpx
+    box-shadow 0 2rpx 10rpx 0 rgba(36, 36, 36, 0.05)
+    background rgba(255, 255, 255, 0.99)
+    width 720rpx
+    height 150rpx
+    padding 33rpx 20rpx
+    box-sizing border-box
+    border-radius 10rpx
+    display flex
+    align-content center
+    .user-avatar, .user-name, .user-sex
+      line-height 84rpx
+    .user-avatar
+      flex 0 0 84rpx
+      border-radius 50%
+      box-sizing border-box
+      margin-right 30rpx
+      overflow hidden
+      .img
+        max-width 100%
+    .user-sex
+      flex 0 0 44rpx
+      overflow hidden
+      .img
+        max-width 100%
+    .user-name
+      flex 1
+.main-list
+  margin 30rpx 0
+  padding 0 15rpx
+  .item
+    display flex
+    flex-wrap nowrap
+    width 100%
+    align-content center
+    .icon
+      padding 12rpx 0
+      max-width 48rpx
+      height 48rpx
+      margin-right 20rpx
+    .text
+      flex 1
+      line-height 72rpx
+      font-size $font-size-medium
+      padding-left 15rpx
+// 歌单
+.disc-title
+  font-size $font-size-small
+  background-color #f9f9f9
+  padding 10rpx 15rpx
+.disc-list
+  .item
+    font-size 0
+    padding 15rpx
+    .image-wrapper, .desc-wrapper
+      display inline-block
+      vertical-align top
+    .image-wrapper
+      flex 0 0 80rpx
+      width 80rpx
+      height 80rpx
+      overflow hidden
+      margin-right 15rpx
+      .img
+        max-width 100%
+    .desc-wrapper
+      line-height 40rpx
+      .text
+        font-size $font-size-medium
+        display block
+      .count
+        color $color-text-l

@@ -1,6 +1,6 @@
 export const dark = {
-  bground: '#c00',
-  font: '#ffbe0a'
+  bground: '#282828',
+  font: '#ffd100'
 }
 
 export const red = {

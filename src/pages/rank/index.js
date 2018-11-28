@@ -31,16 +31,11 @@ export default class Index extends Component {
 
   componentDidMount() {
     this._fetchData()
-    console.log(this.list1())
   }
 
-  list1() {
-    return this.state.topList.splice(0, 1)
-  }
-
+  // 获取所有榜单
   _fetchData() {
     Taro.showLoading({ title: '加载中' })
-    // 获取Banner
     api.getToplist().then(res => {
       if (res.code === ERR_OK) {
         Taro.hideLoading()

@@ -9,7 +9,9 @@ export default {
   // 获取推荐歌单
   getNewsong: (params) => fly.get('personalized/newsong'),
 
-
   // 获取推荐歌单
-  getToplist: (params) => fly.get('toplist')
+  getToplist: (params) => fly.get('toplist'),
+
+  // 用户创建的歌单
+  getUserPlayList: (params) => fly.get('user/playlist?uid=36483413')
 }
