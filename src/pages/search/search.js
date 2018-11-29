@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import './index.styl'
+import './main.styl'
 
 export default class Index extends Component {
   config = {
@@ -26,7 +26,7 @@ export default class Index extends Component {
 
   handleTurnPage() {
     Taro.switchTab({
-      url: '/pages/my/index'
+      url: '/pages/user/index'
     })
   }
 

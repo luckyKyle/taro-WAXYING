@@ -19,8 +19,8 @@ mult_line_ellipsis($line = 2)
   -webkit-line-clamp $line
   -webkit-box-orient vertical
 // 前缀icon
-prefix-icon($width = 0, $height = 0)
-  pos-y()
+prefix-icon($width = 0, $height = 0, $offset = 0)
+  pos-y($offset)
   content ''
   height $height
   width $width

@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import Index from './pages/index'
+import Index from './pages/recommend'
 
 import './common/stylus/index.styl'
 
@@ -12,11 +12,12 @@ import './common/stylus/index.styl'
 class App extends Component {
   config = {
     pages: [
-      'pages/recommend/index',
-      'pages/rank/index',
-      'pages/video/index',
-      'pages/my/index',
-      'pages/search/index'
+      'pages/recommend/recommend',
+      'pages/rank/rank',
+      'pages/mv/mv',
+      'pages/user/user',
+      'pages/search/search',
+      'pages/disc-detail/disc-detail'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -33,40 +34,32 @@ class App extends Component {
       position: 'bottom',
       list: [
         {
-          pagePath: 'pages/recommend/index',
+          pagePath: 'pages/recommend/recommend',
           text: '推荐',
           iconPath: 'static/images/tab-recommend-blur.png',
           selectedIconPath: 'static/images/tab-recommend.png'
         },
         {
-          pagePath: 'pages/rank/index',
+          pagePath: 'pages/rank/rank',
           text: '排行榜',
           iconPath: 'static/images/tab-rank-blur.png',
           selectedIconPath: 'static/images/tab-rank.png'
         },
         {
-          pagePath: 'pages/video/index',
-          text: '视频',
-          iconPath: 'static/images/tab-search-blur.png',
-          selectedIconPath: 'static/images/tab-search.png'
+          pagePath: 'pages/mv/mv',
+          text: 'MV',
+          iconPath: 'static/images/tab-mv-blur.png',
+          selectedIconPath: 'static/images/tab-mv.png'
         },
         {
-          pagePath: 'pages/my/index',
+          pagePath: 'pages/user/user',
           text: '我的',
-          iconPath: 'static/images/tab-my-blur.png',
-          selectedIconPath: 'static/images/tab-my.png'
+          iconPath: 'static/images/tab-user-blur.png',
+          selectedIconPath: 'static/images/tab-user.png'
         }
       ]
     }
   }
-
-  componentDidMount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
-
-  componentDidCatchError() {}
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数

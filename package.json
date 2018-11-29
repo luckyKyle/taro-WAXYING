@@ -29,7 +29,8 @@
     "decimal.js": "^10.0.1",
     "flyio": "^0.6.4",
     "nerv-devtools": "^1.3.9",
-    "nervjs": "^1.3.9"
+    "nervjs": "^1.3.9",
+    "prop-types": "^15.6.2"
   },
   "devDependencies": {
     "@types/react": "^16.4.6",

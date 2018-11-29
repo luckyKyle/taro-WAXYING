@@ -1,8 +1,11 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Image } from '@tarojs/components'
 import api from '../../api'
 import { ERR_OK } from '../../api/config'
-import './index.styl'
+
+import SearchBar from '../../components/SearchBar/SearchBar'
+
+import './main.styl'
 
 export default class Index extends Component {
   config = {
@@ -12,17 +15,12 @@ export default class Index extends Component {
   constructor() {
     this.state = {
       loading: true, // 加载状态
-      artistToplist: null,
       rank_netease: {
         title: '',
         list: []
       },
       rank_global: {
         title: '',
-        list: []
-      },
-      rank_user: {
-        title: '用户榜',
         list: []
       },
       topList: [] // 排行榜列表
@@ -40,7 +38,6 @@ export default class Index extends Component {
       if (res.code === ERR_OK) {
         Taro.hideLoading()
         res.artistToplist.coverImgUrl = res.artistToplist.coverUrl
-        // let list1 = res.list.splice(0, 4).concat(res.artistToplist)
         this.setState({
           rank_netease: {
             title: '云音乐官方榜',
@@ -60,27 +57,27 @@ export default class Index extends Component {
     return (
       <View className='rank'>
         <View className='title'>{this.state.rank_netease.title}</View>
-        <View className="list">
+        <View className='list'>
           {this.state.rank_netease.list.map(item => (
             <View key={item.id} className='item'>
               <View className='image-wrapper'>
-                <Image src={item.coverImgUrl} alt='' lazy-load={true} mode='aspectFill' className='img' />
-                <Text className="update">{item.updateFrequency}</Text>
+                <Image src={item.coverImgUrl} alt='' lazy-load mode='aspectFill' className='img' />
+                <Text className='update'>{item.updateFrequency}</Text>
               </View>
-              <Text className="text">{item.name}</Text>
+              <Text className='text'>{item.name}</Text>
             </View>
           ))}
         </View>
 
         <View className='title'>{this.state.rank_global.title}</View>
-        <View className="list">
+        <View className='list'>
           {this.state.rank_global.list.map(item => (
             <View key={item.id} className='item'>
               <View className='image-wrapper'>
-                <Image src={item.coverImgUrl} alt='' lazy-load={true} mode='aspectFill' className='img' />
-                <Text className="update">{item.updateFrequency}</Text>
+                <Image src={item.coverImgUrl} alt='' lazy-load mode='aspectFill' className='img' />
+                <Text className='update'>{item.updateFrequency}</Text>
               </View>
-              <Text className="text">{item.name}</Text>
+              <Text className='text'>{item.name}</Text>
             </View>
           ))}
         </View>

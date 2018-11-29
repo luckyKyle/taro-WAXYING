@@ -1,0 +1,33 @@
+@import '../../common/stylus/variable'
+@import '../../common/stylus/mixin'
+// 焦点图
+.slider
+  margin-bottom 15rpx
+  .image-wrapper
+    position relative
+    height 100%
+    border-bottom-left-radius 4rpx
+    border-bottom-right-radius 4rpx
+    overflow hidden
+    .type-title
+      position absolute
+      z-index 1
+      font-size $font-size-small
+      right 0
+      bottom 0
+      color #fff
+      padding 5rpx 15rpx
+      border-top-left-radius 10rpx
+    .img
+      width 100%
+      height 100%
+.title
+  position relative
+  font-size $font-size-medium-x
+  color $color-text
+  padding-left 30rpx
+  margin-bottom 15rpx
+  line-height 40rpx
+  &:before
+    prefix-icon(4rpx, 40rpx, 15rpx)
+    background-color $color-sub-theme

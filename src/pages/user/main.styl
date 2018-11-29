@@ -34,6 +34,7 @@
         max-width 100%
     .user-name
       flex 1
+// 主列表
 .main-list
   margin 30rpx 0
   padding 0 15rpx
@@ -42,16 +43,26 @@
     flex-wrap nowrap
     width 100%
     align-content center
+    overflow hidden
+    position relative
+    &:after
+      pos-y(0, false)
+      font-family 'iconfont' !important
+      font-size $font-size-large-x
+      content '\e617'
+      color #ccc
+      z-index 3
     .icon
-      padding 12rpx 0
-      max-width 48rpx
-      height 48rpx
+      padding 20rpx 0
+      max-width 50rpx
+      height 50rpx
       margin-right 20rpx
     .text
       flex 1
-      line-height 72rpx
+      height 60rpx
+      line-height 60rpx
       font-size $font-size-medium
-      padding-left 15rpx
+      padding 15rpx 0 15rpx 15rpx
 // 歌单
 .disc-title
   font-size $font-size-small
@@ -73,13 +84,17 @@
       height 80rpx
       overflow hidden
       margin-right 15rpx
+      border-radius 8rpx
       .img
         max-width 100%
     .desc-wrapper
-      line-height 40rpx
       width 625rpx
+      height 80rpx
+      box-sizing border-box
+      padding 5rpx 0
       .text
         font-size $font-size-medium
+        line-height 35rpx
         display block
       .count
         color $color-text-l
