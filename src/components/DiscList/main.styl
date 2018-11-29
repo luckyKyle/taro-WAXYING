@@ -41,8 +41,10 @@
         background-repeat no-repeat
         background-size 11px 10px
         text-shadow 1px 0 0 rgba(0, 0, 0, 0.15)
-        .iconfont
-          font-size $font-size-small
+        &:before
+          content '\e643'
+          font-family 'iconfont' !important
+          display inline-block
           margin-right 5rpx
       .img
         position absolute

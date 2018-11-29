@@ -5,9 +5,10 @@ import { parseLargeNumber } from '../../utils/number'
 import './main.styl'
 import '../../common/stylus/common/iconfont.styl'
 
-// const defaultProps = { list: PropTypes.array }
-
 export default class MvList extends Component {
+  static defaultProps = {
+    list: []
+  }
   render() {
     return (
       <View className='mv-list-wrapper'>
@@ -26,8 +27,4 @@ export default class MvList extends Component {
       </View>
     )
   }
-}
-
-MvList.defaultProps = {
-  list: []
 }

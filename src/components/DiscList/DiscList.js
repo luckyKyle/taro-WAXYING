@@ -8,6 +8,9 @@ import '../../common/stylus/common/iconfont.styl'
 // const defaultProps = { list: PropTypes.array }
 
 export default class DiscList extends Component {
+  static defaultProps = {
+    list: []
+  }
   constructor(props) {
     super(props)
     this.state = {}
@@ -26,7 +29,6 @@ export default class DiscList extends Component {
             <View className='img-wrapper'>
               <Image src={item.picUrl} mode='widthFix' lazy-load className='img' />
               <View className='count'>
-                <Text className='iconfont icon-yinle' />
                 {parseLargeNumber(item.playCount)}
               </View>
             </View>
@@ -36,8 +38,4 @@ export default class DiscList extends Component {
       </View>
     )
   }
-}
-
-DiscList.defaultProps = {
-  list: []
 }

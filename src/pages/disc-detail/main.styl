@@ -3,3 +3,46 @@
 .disc-detail
   height 40rpx
   background red
+  .disc-info
+    display flex
+    padding 15rpx
+  .img-wrapper
+    position relative
+    padding-bottom 100%
+    box-sizing border-box
+    overflow hidden
+    border-radius 8rpx
+    width 180rpx
+    &:after
+      content ' '
+      position absolute
+      left 0
+      top 0
+      width 100%
+      height 40rpx
+      z-index 2
+      background-image linear-gradient(180deg, rgba(0, 0, 0, 0.25), transparent)
+  .count
+    position absolute
+    right 10rpx
+    top 4rpx
+    z-index 3
+    padding-left 13rpx
+    color #fff
+    font-size 24rpx
+    background-position 0
+    background-repeat no-repeat
+    background-size 11px 10px
+    text-shadow 1px 0 0 rgba(0, 0, 0, 0.15)
+    &:before
+      content '\e643'
+      font-family 'iconfont' !important
+      display inline-block
+      margin-right 5rpx
+  .img
+    position absolute
+    width 100%
+    vertical-align middle
+    left 0
+    top 0
+    z-index 1

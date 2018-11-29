@@ -5,6 +5,9 @@ import './main.styl'
 import '../../common/stylus/common/iconfont.styl'
 
 export default class SongList extends Component {
+  static defaultProps = {
+    list: []
+  }
   render() {
     return (
       <View className='song-list-wrapper'>
@@ -23,8 +26,4 @@ export default class SongList extends Component {
       </View>
     )
   }
-}
-
-SongList.defaultProps = {
-  list: []
 }
