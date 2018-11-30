@@ -18,7 +18,8 @@ class App extends Component {
       'pages/user/user', // 用户
       'pages/search/search', // 搜索
       'pages/disc-detail/disc-detail', // 歌单详情
-      'pages/play/play', // 播放器
+      'pages/play-song/play-song', // 播放器
+      'pages/play-video/play-video', // 播放视频
     ],
     window: {
       backgroundTextStyle: 'light',

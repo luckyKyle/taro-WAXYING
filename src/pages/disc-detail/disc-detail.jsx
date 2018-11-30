@@ -41,7 +41,6 @@ export default class Index extends Component {
         this.setState({
           data
         })
-        // Taro.setNavigationBarTitle({ title: data.name })
       }
     })
   }
@@ -49,6 +48,8 @@ export default class Index extends Component {
   render() {
     if (this.state.data === null) return
     const { tracks, coverImgUrl, playCount, name, tags, creator } = this.state.data
+
+    console.log(this.state.data)
 
     return (
       <View className='disc-detail'>

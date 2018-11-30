@@ -9,11 +9,17 @@ export default class MvList extends Component {
   static defaultProps = {
     list: []
   }
+
+
+  toPlayVideo(id) {
+    Taro.navigateTo({ url: `/pages/play-video/play-video?mvid=${id}` })
+  }
+
   render() {
     return (
       <View className='mv-list-wrapper'>
         {this.props.list.map(item => (
-          <View className='mv-item' key={item.id}>
+          <View className='mv-item' key={item.id}  onClick={this.toPlayVideo.bind(this, item.id)}>
             <View className='img-wrapper'>
               <Image src={item.cover || item.picUrl} mode='widthFix' lazy-load className='img' />
               <View className='count'>

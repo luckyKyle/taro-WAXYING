@@ -15,8 +15,7 @@ export default class Index extends Component {
 
   constructor() {
     this.state = {
-      params: null,
-      data: null,
+      data: null, // 数据源
       loading: true // 加载状态
     }
   }

@@ -10,15 +10,15 @@ export default class SongList extends Component {
     list: []
   }
 
-  toPlay(id) {
-    Taro.navigateTo({ url: `/pages/play/play?ids=${id}` })
+  toPlaySong(id) {
+    Taro.navigateTo({ url: `/pages/play-song/play-song?ids=${id}` })
   }
 
   render() {
     return (
       <View className='song-list-wrapper'>
         {this.props.list.map(item => (
-          <View className='item border-bottom-1px' key={item.id} onClick={this.toPlay.bind(this, item.id)}>
+          <View className='item border-bottom-1px' key={item.id} onClick={this.toPlaySong.bind(this, item.id)}>
             <View className='content'>
               <View className='name'>
                 {item.name}

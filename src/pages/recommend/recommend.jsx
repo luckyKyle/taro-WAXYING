@@ -49,7 +49,6 @@ export default class Index extends Component {
     // 获取Banner，推荐歌单，推荐MV ，新歌
     const queue = [api.getBanner(), api.getPersonalized(), api.getPersonalizedMv(), api.getNewsong()]
     Promise.all(queue).then(data => {
-      console.log('data===', data)
       Taro.hideLoading()
       this.setState({
         banners: data[0].banners,
