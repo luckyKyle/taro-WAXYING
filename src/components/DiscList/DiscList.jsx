@@ -9,7 +9,8 @@ import '../../common/stylus/common/iconfont.styl'
 
 export default class DiscList extends Component {
   static defaultProps = {
-    list: []
+    list: [],
+    isRank: false
   }
   constructor(props) {
     super(props)
@@ -26,9 +27,8 @@ export default class DiscList extends Component {
         {this.props.list.map(item => (
           <View className='disc-item item' key={item.id} onClick={this.toDetail.bind(this, item.id)}>
             <View className='img-wrapper'>
-              <Image src={item.picUrl||item.coverImgUrl} mode='widthFix' lazy-load className='img' />
-              <View className='count'>{parseLargeNumber(item.playCount)}</View>
-              <Text className='update'>{item.updateFrequency}</Text>
+              <Image src={item.picUrl || item.coverImgUrl || item.coverUrl} mode='widthFix' lazy-load className='img' />
+              {this.props.isRank ? <Text className='update'>{item.updateFrequency}</Text> : <View className='count'>{parseLargeNumber(item.playCount)}</View>}
             </View>
             <Text className='text'>{item.name}</Text>
           </View>

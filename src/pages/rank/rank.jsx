@@ -20,8 +20,7 @@ export default class Index extends Component {
       },
       rank_global: {
         list: []
-      },
-      topList: [] // 排行榜列表
+      }
     }
   }
 
@@ -35,7 +34,8 @@ export default class Index extends Component {
     api.getToplist().then(res => {
       if (res.code === ERR_OK) {
         Taro.hideLoading()
-        res.artistToplist.coverImgUrl = res.artistToplist.coverUrl
+        //  res.artistToplist  歌手榜
+        console.log('歌手榜==', res.artistToplist)
         this.setState({
           rank_netease: {
             title: '云音乐官方榜',
@@ -54,11 +54,13 @@ export default class Index extends Component {
   render() {
     return (
       <View className='rank'>
+        {/* 官方榜 */}
         <View className='title'>{this.state.rank_netease.title}</View>
-        <DiscList list={this.state.rank_netease.list}></DiscList>
+        <DiscList list={this.state.rank_netease.list} isRank />
 
+        {/* 全球榜 */}
         <View className='title'>{this.state.rank_global.title}</View>
-        <DiscList list={this.state.rank_global.list}></DiscList>
+        <DiscList list={this.state.rank_global.list} isRank />
       </View>
     )
   }
