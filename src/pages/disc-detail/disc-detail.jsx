@@ -38,7 +38,6 @@ export default class Index extends Component {
       if (res.code === ERR_OK) {
         Taro.hideLoading()
         const data = res.playlist
-        console.log('data===', data)
         this.setState({
           data
         })
@@ -50,8 +49,6 @@ export default class Index extends Component {
   render() {
     if (this.state.data === null) return
     const { tracks, coverImgUrl, playCount, name, tags, creator } = this.state.data
-
-    console.log(tracks)
 
     return (
       <View className='disc-detail'>

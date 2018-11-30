@@ -12,12 +12,13 @@ import './common/stylus/index.styl'
 class App extends Component {
   config = {
     pages: [
-      'pages/recommend/recommend',
-      'pages/rank/rank',
-      'pages/mv/mv',
-      'pages/user/user',
-      'pages/search/search',
-      'pages/disc-detail/disc-detail'
+      'pages/recommend/recommend', // 推荐
+      'pages/rank/rank', // 排行
+      'pages/mv/mv', // MV
+      'pages/user/user', // 用户
+      'pages/search/search', // 搜索
+      'pages/disc-detail/disc-detail', // 歌单详情
+      'pages/play/play', // 播放器
     ],
     window: {
       backgroundTextStyle: 'light',

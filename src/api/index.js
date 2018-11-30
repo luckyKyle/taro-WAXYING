@@ -17,6 +17,11 @@ export default {
   // TODO 歌单
   getDiscDetail: params => fly.get('playlist/detail', params),
 
+  // TODO 歌曲
+  getSongDetail: params => fly.get('/song/detail', params),
+
+  // /song/detail?ids=347230
+
   // TODO MV
   getMvList: params => fly.get('top/mv?limit=15&offset=1'),
 
