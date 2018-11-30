@@ -14,6 +14,22 @@ export default class Index extends Component {
   config = {
     navigationBarTitleText: '我的'
   }
+
+  MAIN_LIST = [
+    {
+      title: '最近播放',
+      icon: iconFoot
+    },
+    {
+      title: '我的收藏',
+      icon: iconLike
+    },
+    {
+      title: '我的收藏',
+      icon: iconFlash
+    }
+  ]
+
   constructor() {
     this.state = {
       loading: true, // 加载状态
@@ -45,21 +61,6 @@ export default class Index extends Component {
   }
 
   render() {
-    const MAIN_LIST = [
-      {
-        title: '最近播放',
-        icon: iconFoot
-      },
-      {
-        title: '我的收藏',
-        icon: iconLike
-      },
-      {
-        title: '我的收藏',
-        icon: iconFlash
-      }
-    ]
-
     return (
       <View className='my'>
         <View className='my-info-wrapper'>
@@ -71,7 +72,7 @@ export default class Index extends Component {
           </View>
         </View>
         <View className='main-list'>
-          {MAIN_LIST.map((item, index) => (
+          {this.MAIN_LIST.map((item, index) => (
             <View className='item' key={index}>
               <Image src={item.icon} mode='aspectFit' className='icon' />
               <View className='text border-bottom-1px'>{item.title}</View>

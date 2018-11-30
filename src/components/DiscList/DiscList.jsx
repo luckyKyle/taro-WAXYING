@@ -28,9 +28,7 @@ export default class DiscList extends Component {
           <View className='disc-item item' key={item.id} onClick={this.toDetail.bind(this, item.id)}>
             <View className='img-wrapper'>
               <Image src={item.picUrl} mode='widthFix' lazy-load className='img' />
-              <View className='count'>
-                {parseLargeNumber(item.playCount)}
-              </View>
+              <View className='count'>{parseLargeNumber(item.playCount)}</View>
             </View>
             <Text className='text'>{item.name}</Text>
           </View>

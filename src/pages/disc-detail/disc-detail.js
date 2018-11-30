@@ -25,6 +25,10 @@ export default class Index extends Component {
     this._fetchData()
   }
 
+  blurryImg(img) {
+    return `background: url(${img});background-size: cover;filter: blur(15px)`
+  }
+
   // 获取所有榜单
   _fetchData() {
     Taro.showLoading({ title: '加载中' })
@@ -45,20 +49,33 @@ export default class Index extends Component {
 
   render() {
     if (this.state.data === null) return
-    const { tracks, coverImgUrl, playCount } = this.state.data
+    const { tracks, coverImgUrl, playCount, name, tags, creator } = this.state.data
+
+    console.log(tracks)
 
     return (
       <View className='disc-detail'>
-        <View className='disc-info'>
+        {/* 头部信息 */}
+        <View className='header border-bottom-1px'>
           <View className='img-wrapper'>
-            <Image src={coverImgUrl}  mode='widthFix' lazy-load className='img'/>
+            <Image src={coverImgUrl} mode='widthFix' lazy-load className='img' />
             <View className='count'>{parseLargeNumber(playCount)}</View>
-            <View className='iconfont icon-vynil' />
+            <View className='iconfont icon-vynil info' />
           </View>
+          <View className='info-wrapper'>
+            <Text className='title'>{name}</Text>
+            <Text className='tags'>{tags.length ? `[${tags}]` : ''}</Text>
+            <View className='creator'>
+              <Image mode='widthFix' src={creator.avatarUrl} className='avatar' />
+              <Text className='nickname'>{creator.nickname}</Text>
+            </View>
+          </View>
+          <View className='blurry-bg' style={this.blurryImg(coverImgUrl)} />
         </View>
-        {tracks.map(item => (
+        <SongList list={tracks}></SongList>
+        {/* {tracks.map(item => (
           <View key={item.id}>{item.name}</View>
-        ))}
+        ))} */}
       </View>
     )
   }
