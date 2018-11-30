@@ -17,7 +17,6 @@ export default class DiscList extends Component {
   }
 
   toDetail = id => {
-    // console.log(id)
     Taro.navigateTo({ url: `/pages/disc-detail/disc-detail?id=${id}` })
   }
 
@@ -27,8 +26,9 @@ export default class DiscList extends Component {
         {this.props.list.map(item => (
           <View className='disc-item item' key={item.id} onClick={this.toDetail.bind(this, item.id)}>
             <View className='img-wrapper'>
-              <Image src={item.picUrl} mode='widthFix' lazy-load className='img' />
+              <Image src={item.picUrl||item.coverImgUrl} mode='widthFix' lazy-load className='img' />
               <View className='count'>{parseLargeNumber(item.playCount)}</View>
+              <Text className='update'>{item.updateFrequency}</Text>
             </View>
             <Text className='text'>{item.name}</Text>
           </View>

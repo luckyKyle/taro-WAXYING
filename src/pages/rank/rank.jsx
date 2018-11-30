@@ -3,7 +3,7 @@ import { View, Text, Image } from '@tarojs/components'
 import api from '../../api'
 import { ERR_OK } from '../../api/config'
 
-import SearchBar from '../../components/SearchBar/SearchBar'
+import DiscList from '../../components/DiscList/DiscList'
 
 import './main.styl'
 
@@ -16,11 +16,9 @@ export default class Index extends Component {
     this.state = {
       loading: true, // 加载状态
       rank_netease: {
-        title: '',
         list: []
       },
       rank_global: {
-        title: '',
         list: []
       },
       topList: [] // 排行榜列表
@@ -57,30 +55,10 @@ export default class Index extends Component {
     return (
       <View className='rank'>
         <View className='title'>{this.state.rank_netease.title}</View>
-        <View className='list'>
-          {this.state.rank_netease.list.map(item => (
-            <View key={item.id} className='item'>
-              <View className='image-wrapper'>
-                <Image src={item.coverImgUrl} alt='' lazy-load mode='aspectFill' className='img' />
-                <Text className='update'>{item.updateFrequency}</Text>
-              </View>
-              <Text className='text'>{item.name}</Text>
-            </View>
-          ))}
-        </View>
+        <DiscList list={this.state.rank_netease.list}></DiscList>
 
         <View className='title'>{this.state.rank_global.title}</View>
-        <View className='list'>
-          {this.state.rank_global.list.map(item => (
-            <View key={item.id} className='item'>
-              <View className='image-wrapper'>
-                <Image src={item.coverImgUrl} alt='' lazy-load mode='aspectFill' className='img' />
-                <Text className='update'>{item.updateFrequency}</Text>
-              </View>
-              <Text className='text'>{item.name}</Text>
-            </View>
-          ))}
-        </View>
+        <DiscList list={this.state.rank_global.list}></DiscList>
       </View>
     )
   }
