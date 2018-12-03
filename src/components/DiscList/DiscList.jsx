@@ -18,7 +18,16 @@ export default class DiscList extends Component {
   }
 
   toDetail = id => {
-    Taro.navigateTo({ url: `/pages/disc-detail/disc-detail?id=${id}` })
+    console.log('id===', id)
+    let url = ''
+    switch (id) {
+      case 'singerTop': // 歌手页
+        url = `/pages/singer/singer`
+        break
+      default:
+        url = `/pages/disc-detail/disc-detail?id=${id}`
+    }
+    Taro.navigateTo({ url })
   }
 
   render() {

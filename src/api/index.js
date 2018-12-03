@@ -21,10 +21,8 @@ export default {
   // 获取歌曲详情
   getSongDetail: params => fly.get('/song/detail', params),
 
-  // /song/detail?ids=347230
-
   // TODO MV
-  // 获取MV 排行
+  // 获取MV排行
   getMvList: params => fly.get('top/mv?limit=15&offset=1', params),
 
   // 获取MV 数据
@@ -33,6 +31,9 @@ export default {
   // TODO 排行榜
   // 获取推荐歌单
   getToplist: params => fly.get('toplist', params),
+
+  // 歌手榜
+  getArtist: params => fly.get('toplist/artist', params),
 
   // TODO 用户:
   // 用户创建的歌单

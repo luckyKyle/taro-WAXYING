@@ -3,6 +3,7 @@ import { View, Text, Image } from '@tarojs/components'
 import api from '../../api'
 import { ERR_OK } from '../../api/config'
 import { parseLargeNumber } from '../../utils/number'
+import { AtAvatar } from 'taro-ui'
 
 import SongList from '../../components/SongList/SongList'
 
@@ -70,7 +71,7 @@ export default class Index extends Component {
           </View>
           <View className='blurry-bg' style={this.blurryImg(coverImgUrl)} />
         </View>
-        <SongList list={tracks}></SongList>
+        <SongList list={tracks} />
         {/* {tracks.map(item => (
           <View key={item.id}>{item.name}</View>
         ))} */}

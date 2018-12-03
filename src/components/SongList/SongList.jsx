@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Text } from '@tarojs/components'
-// import PropTypes from 'prop-types'
 import './main.styl'
 import '../../common/stylus/common/iconfont.styl'
 import '../../common/stylus/common/border.styl'

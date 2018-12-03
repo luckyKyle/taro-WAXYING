@@ -35,7 +35,7 @@ export default class Index extends Component {
       if (res.code === ERR_OK) {
         Taro.hideLoading()
         //  res.artistToplist  歌手榜
-        console.log('歌手榜==', res.artistToplist)
+        res.artistToplist.id = 'singerTop'
         this.setState({
           rank_netease: {
             title: '云音乐官方榜',
