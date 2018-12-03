@@ -4,7 +4,7 @@ import api from '../../api'
 import { ERR_OK } from '../../api/config'
 
 import { AtAvatar, AtTabs, AtTabsPane } from 'taro-ui'
-// import Loading from '../../components/Loading/Loading'
+import Loading from '../../components/Loading/Loading'
 
 import './main.styl'
 
@@ -71,22 +71,35 @@ export default class Index extends Component {
               <AtTabsPane current={current} index={index} key={index}>
                 {/* 内容 */}
                 {this.state.loading ? (
-                  <View className='txcenter'>加载中</View>
-                ) : (
-                  <View className='tab-content singer-list'>
-                    {this.state.artists.map((artist, rank) => (
-                      <View className='item border-bottom-1px' key={artist.id}>
-                        <View className='rank'>
-                          <Text>本次:{rank + 1}</Text>
-                          <Text>上次:{artist.lastRank + 1}</Text>
-                        </View>
-                        <View className='avatar'>
-                          <AtAvatar image={artist.img1v1Url} />
-                        </View>
-                        <View className='name'>{artist.name}</View>
-                      </View>
-                    ))}
+                  <View className='sk-wave'>
+                    <View className='sk-rect sk-rect1' />
+                    <View className='sk-rect sk-rect2' />
+                    <View className='sk-rect sk-rect3' />
+                    <View className='sk-rect sk-rect4' />
+                    <View className='sk-rect sk-rect5' />
                   </View>
+                ) : (
+                  <View className='sk-wave'>
+                    <View className='sk-rect sk-rect1' />
+                    <View className='sk-rect sk-rect2' />
+                    <View className='sk-rect sk-rect3' />
+                    <View className='sk-rect sk-rect4' />
+                    <View className='sk-rect sk-rect5' />
+                  </View>
+                  // <View className='tab-content singer-list'>
+                  //   {this.state.artists.map((artist, rank) => (
+                  //     <View className='item border-bottom-1px' key={artist.id}>
+                  //       <View className='rank'>
+                  //         <Text>本次:{rank + 1}</Text>
+                  //         <Text>上次:{artist.lastRank + 1}</Text>
+                  //       </View>
+                  //       <View className='avatar'>
+                  //         <AtAvatar image={artist.img1v1Url} />
+                  //       </View>
+                  //       <View className='name'>{artist.name}</View>
+                  //     </View>
+                  //   ))}
+                  // </View>
                 )}
               </AtTabsPane>
             ))}
