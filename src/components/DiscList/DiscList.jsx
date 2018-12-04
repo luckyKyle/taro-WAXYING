@@ -5,13 +5,17 @@ import PropTypes from 'prop-types'
 import './main.styl'
 import '../../common/stylus/common/iconfont.styl'
 
-// const defaultProps = { list: PropTypes.array }
-
 export default class DiscList extends Component {
   static defaultProps = {
     list: [],
     isRank: false
   }
+
+  static propTypes = {
+    list: PropTypes.oneOfType([PropTypes.array]),
+    isRank: PropTypes.oneOfType([PropTypes.bool])
+  }
+
   constructor(props) {
     super(props)
     this.state = {}

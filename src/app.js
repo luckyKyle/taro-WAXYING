@@ -20,7 +20,8 @@ class App extends Component {
       'pages/disc-detail/disc-detail', // 歌单详情
       'pages/play-song/play-song', // 播放器
       'pages/play-video/play-video', // 播放视频
-      'pages/singer/singer' // 歌手榜
+      'pages/singer/singer', // 歌手榜
+      'pages/singer-detail/singer-detail', // 播放视频
     ],
     window: {
       backgroundTextStyle: 'light',

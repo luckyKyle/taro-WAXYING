@@ -3,21 +3,20 @@
 $rectCount = 5
 $animationDuration = 1.2s
 $delayRange = 0.4s
-$spinkit-spinner-margin = 40px auto
-$spinkit-size = 40px
+$spinkit-spinner-margin = 0px auto
+$spinkit-size = 40rpx
 $spinkit-spinner-color = #c00
 
 .sk-wave
-  background-color: #fc0
   margin $spinkit-spinner-margin
   width ($spinkit-size * 1.25)
   height $spinkit-size
   text-align center
-  font-size 10rpx
+  font-size 0
   .sk-rect
     background-color $spinkit-spinner-color
     height 100%
-    width 6px
+    width 6rpx
     display inline-block
     animation sk-waveStretchDelay $animationDuration infinite ease-in-out
   for $i in 1 .. $rectCount

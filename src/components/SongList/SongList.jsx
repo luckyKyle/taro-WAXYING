@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Text } from '@tarojs/components'
+import PropTypes from 'prop-types'
 import './main.styl'
 import '../../common/stylus/common/iconfont.styl'
 import '../../common/stylus/common/border.styl'
@@ -7,6 +8,10 @@ import '../../common/stylus/common/border.styl'
 export default class SongList extends Component {
   static defaultProps = {
     list: []
+  }
+
+  static propTypes = {
+    list: PropTypes.oneOfType([PropTypes.array])
   }
 
   toPlaySong(id) {
