@@ -6,7 +6,7 @@
   .header
     position relative
     display flex
-    padding 15rpx
+    padding 15rpx 15rpx 20rpx
     overflow hidden
     box-sizing border-box
     width 100%
@@ -110,6 +110,7 @@
         height 48rpx
         border-radius 50rpx
         margin-right 10rpx
+  // 遮罩
   .mask
     fixed-full(9)
     background-color #f4f4f4
@@ -158,3 +159,43 @@
         border 1rpx solid rgba(255, 255, 255, 0.35)
     &-desc
       mult-line-ellipsis(10)
+  // 播放面板
+  .song-bar
+    position relative
+    z-index 2
+    display flex
+    justify-content space-between
+    align-items center
+    width 100%
+    box-sizing border-box
+    border-top-left-radius 15rpx
+    border-top-right-radius 15rpx
+    overflow hidden
+    background #fff
+    margin-top -5rpx
+    &::after
+      left 15rpx
+      right 15rpx
+    .play-all
+      padding 15rpx 15rpx
+      background #fff
+      flex 1
+      font-size $font-size-medium-x
+      &:before
+        content '\e60d'
+        font-family 'iconfont' !important
+        font-size $font-size-large-x
+        display inline-block
+        vertical-align top
+      .total
+        color $color-text-l
+    .add-subscribed
+      position absolute
+      padding 15rpx
+      height 100%
+      box-sizing border-box
+      right 0
+      text-align center
+      background-color $color-theme
+      font-size $font-size-medium
+      color #fff

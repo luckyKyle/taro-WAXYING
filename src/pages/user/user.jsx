@@ -47,17 +47,34 @@ export default class Index extends Component {
     Taro.navigateTo({ url: `/pages/disc-detail/disc-detail?id=${id}` })
   }
   // Taro.startPullDownRefresh()
+
+  // 分割创建歌单和收藏歌单
+  _splitList(userId, list) {
+    let userCreatedDiscList = []
+    let userFavoriteDiscList = []
+    list.forEach(item => {
+      if (item.creator.userId === userId) {
+        userCreatedDiscList.push(item)
+      } else {
+        userFavoriteDiscList.push(item)
+      }
+    })
+    return { userCreatedDiscList, userFavoriteDiscList }
+  }
+
   // 获取创建歌单
   _fetchData() {
     Taro.showLoading({ title: '加载中' })
     api.getUserPlayList().then(res => {
-      console.log(res)
+      console.log('res==', res)
       if (res.code === ERR_OK) {
         Taro.hideLoading()
+        const { userId } = res.playlist[0].creator
+        const { userCreatedDiscList, userFavoriteDiscList } = this._splitList(userId, res.playlist)
         this.setState({
           loading: false,
-          userCreatedDiscList: res.playlist.splice(0, 4),
-          userFavoriteDiscList: res.playlist.splice(4)
+          userCreatedDiscList,
+          userFavoriteDiscList
         })
       }
     })
