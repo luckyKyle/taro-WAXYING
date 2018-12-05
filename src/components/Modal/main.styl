@@ -1,0 +1,27 @@
+@import '../../common/stylus/variable'
+@import '../../common/stylus/mixin'
+.modal-wrapper
+  fixed-full(9)
+  display none
+  &.show
+    background-color $color-background-d
+    display block
+  .modal
+    pos-center()
+    background-color $color-background
+    width 550rpx
+    font-size $font-size-medium-x
+    border-radius 8rpx
+    overflow hidden
+    &-title
+      color red
+      padding 15rpx
+    &-content
+      padding 30rpx 15rpx
+    &-btns
+      display flex
+      .btn
+        flex 1
+        text-align center
+        padding 15rpx 0
+        box-sizing border-box

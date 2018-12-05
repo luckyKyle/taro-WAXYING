@@ -65,23 +65,25 @@ export default class Index extends Component {
       <View className='recommend'>
         <SearchBar />
         {/* 轮播 */}
-        <Swiper className='slider' indicatorColor='rgba(255,255,255,.45)' indicatorActiveColor='#d81e06' circular indicatorDots autoplay>
-          {this.state.banners.map(item => {
-            return (
-              <SwiperItem key={item.id}>
-                <View className='image-wrapper'>
-                  <Text className='type-title' style={this.titleType(item.titleColor)}>
-                    {item.typeTitle}
-                  </Text>
-                  <Image src={item.imageUrl} alt='' mode='aspectFill' className='img' />
-                </View>
-              </SwiperItem>
-            )
-          })}
-        </Swiper>
+        <View className='swiper-wrapper'>
+          <Swiper className='swiper' indicatorColor='rgba(255,255,255,.45)' indicatorActiveColor='#d81e06' circular indicatorDots autoplay>
+            {this.state.banners.map(item => {
+              return (
+                <SwiperItem key={item.id}>
+                  <View className='image-wrapper'>
+                    <Text className='type-title' style={this.titleType(item.titleColor)}>
+                      {item.typeTitle}
+                    </Text>
+                    <Image src={item.imageUrl} alt='' mode='aspectFill' className='img' />
+                  </View>
+                </SwiperItem>
+              )
+            })}
+          </Swiper>
+        </View>
         {/* 推荐歌单 */}
         <View className='title'>推荐歌单</View>
-        <DiscList list={this.state.discList}></DiscList>
+        <DiscList list={this.state.discList} />
 
         {/* 推荐MV */}
         <View className='title'>推荐MV</View>
@@ -89,7 +91,7 @@ export default class Index extends Component {
 
         {/* 新歌速递 */}
         <View className='title'>新歌速递</View>
-        <SongList list={this.state.newsongList}></SongList>
+        <SongList list={this.state.newsongList} />
       </View>
     )
   }

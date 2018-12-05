@@ -2,20 +2,31 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './main.styl'
 
+import { AtSearchBar } from 'taro-ui'
+
 export default class Index extends Component {
   config = {
     navigationBarTitleText: '搜索'
   }
 
-  componentWillMount() {}
+  constructor() {
+    super(...arguments)
+    this.state = {
+      value: ''
+    }
+  }
+
+  onChange(value) {
+    this.setState({
+      value: value
+    })
+  }
+
+  onActionClick() {
+    console.log('开始搜索')
+  }
 
   componentDidMount() {}
-
-  componentWillUnmount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
 
   onPullDownRefresh(ev) {
     setTimeout(() => {
@@ -24,18 +35,10 @@ export default class Index extends Component {
     }, 2000)
   }
 
-  handleTurnPage() {
-    Taro.switchTab({
-      url: '/pages/user/index'
-    })
-  }
-
   render() {
     return (
-      <View className='index'>
-        <Text className='title' onClick={this.handleTurnPage}>
-          搜索
-        </Text>
+      <View className='search'>
+        <AtSearchBar value={this.state.value} onChange={this.onChange.bind(this)} onActionClick={this.onActionClick.bind(this)} />
       </View>
     )
   }

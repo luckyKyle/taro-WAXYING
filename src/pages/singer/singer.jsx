@@ -4,7 +4,7 @@ import api from '../../api'
 import { ERR_OK } from '../../api/config'
 import { timestampToTime } from '../../utils/date'
 
-import { AtAvatar, AtToast, AtActivityIndicator } from 'taro-ui'
+import { AtAvatar, AtIcon, AtToast, AtActivityIndicator } from 'taro-ui'
 
 import './main.styl'
 
@@ -66,6 +66,14 @@ export default class Index extends Component {
     val = val - rank
     return val > 0 ? `+${val}` : val
   }
+  // <AtIcon value='clock' size='30' color='#F00'></AtIcon>
+  _riseIcon(val = 101, rank) {
+    let obj = {}
+    val = val - rank
+    obj.icon = val === 0 ? '' : val > 0 ? 'arrow-up' : 'arrow-down'
+    obj.color = val === 0 ? '' : val > 0 ? '#ff1a1a' : '#258ae2'
+    return obj
+  }
 
   render() {
     return (
@@ -87,7 +95,10 @@ export default class Index extends Component {
           <View className='singer-item' key={artist.id} onClick={this.toDetail}>
             <View className='rank'>
               <Text className='ranking'>{rank + 1}</Text>
-              <View className='rise'>{this._rise(artist.lastRank, rank)}</View>
+              <View className='rise'>
+                <AtIcon value={this._riseIcon(artist.lastRank, rank).icon} size='10' color={this._riseIcon(artist.lastRank, rank).color} />
+               <Text className="text">{this._rise(artist.lastRank, rank)}</Text>
+              </View>
             </View>
             <View className='avatar'>
               <AtAvatar image={artist.img1v1Url} />
