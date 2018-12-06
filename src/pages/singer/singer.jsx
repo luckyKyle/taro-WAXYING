@@ -13,8 +13,8 @@ export default class Index extends Component {
     navigationBarTitleText: '歌手榜'
   }
 
-  constructor() {
-    super(...arguments)
+  constructor(props) {
+    super(props)
     this.state = {
       loading: true, // 加载状态
       updateTime: '', // 更新时间
@@ -39,10 +39,6 @@ export default class Index extends Component {
 
   // TAB_LIST = [{ title: '华语' }, { title: '欧美' }, { title: '韩国' }, { title: '日本' }]
   tipText = '选取云音乐中热度最高的100名歌手，每天更新。热度由收藏歌手、歌手歌曲的播放、收藏、分享数量和歌手话题活跃情况综合计算。'
-
-  static test() {
-    return 123
-  }
 
   // 获取所有榜单
   _fetchData() {
@@ -97,7 +93,7 @@ export default class Index extends Component {
               <Text className='ranking'>{rank + 1}</Text>
               <View className='rise'>
                 <AtIcon value={this._riseIcon(artist.lastRank, rank).icon} size='10' color={this._riseIcon(artist.lastRank, rank).color} />
-               <Text className="text">{this._rise(artist.lastRank, rank)}</Text>
+                <Text className='text'>{this._rise(artist.lastRank, rank)}</Text>
               </View>
             </View>
             <View className='avatar'>

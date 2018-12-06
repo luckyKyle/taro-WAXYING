@@ -31,7 +31,7 @@ export default class Index extends Component {
   onPullDownRefresh(ev) {
     setTimeout(() => {
       console.log('停止下拉')
-      wx.stopPullDownRefresh()
+      Taro.stopPullDownRefresh()
     }, 2000)
   }
 

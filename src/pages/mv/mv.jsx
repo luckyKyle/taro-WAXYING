@@ -8,7 +8,8 @@ export default class Index extends Component {
   config = {
     navigationBarTitleText: '视频'
   }
-  constructor() {
+  constructor(props) {
+    super(props)
     this.state = {
       mvList: []
     }

@@ -13,6 +13,7 @@
     font-size $font-size-medium-x
     border-radius 8rpx
     overflow hidden
+    animation confirm-fadein 0.3s
     &-title
       color red
       padding 15rpx
@@ -25,3 +26,17 @@
         text-align center
         padding 15rpx 0
         box-sizing border-box
+        &-cancel
+          background-color #f9f9f9
+        &-confirm
+          background-color $color-theme
+          color #fff
+@keyframes confirm-fadein
+  0%
+    opacity 0
+    transform translate(-50%, -50%) scale(0)
+  50%
+    transform translate(-50%, -50%) scale(1.1)
+  100%
+    opacity 1
+    transform translate(-50%, -50%) scale(1)

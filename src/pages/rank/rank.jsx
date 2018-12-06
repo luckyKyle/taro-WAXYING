@@ -12,7 +12,8 @@ export default class Index extends Component {
     navigationBarTitleText: '排行榜'
   }
 
-  constructor() {
+  constructor(props) {
+    super(props)
     this.state = {
       loading: true, // 加载状态
       rank_netease: {

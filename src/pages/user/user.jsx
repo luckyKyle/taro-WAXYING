@@ -12,7 +12,7 @@ import iconLike from './icon-like.png'
 import iconFlash from './icon-flash.png'
 import avatar from './avatar1.jpg'
 
-export default class Index extends Component {
+export default class User extends Component {
   config = {
     navigationBarTitleText: '我的'
   }
@@ -47,10 +47,13 @@ export default class Index extends Component {
     }
   ]
 
-  constructor() {
+  constructor(props) {
+    super(props)
     this.state = {
       loading: true, // 加载状态
       showModal: false, // 模态框显示状态
+      hideAction: false, // 隐藏滑动按钮
+      delDiscId: '',
       userFavoriteDiscList: [], // 用户收藏的歌单
       userCreatedDiscList: [] // 用户创建的歌单
     }
@@ -60,17 +63,40 @@ export default class Index extends Component {
     this._fetchData()
   }
 
+  componentDidHide() {
+    this.setState({
+      hideAction: true
+    })
+  }
+
   // 跳转到歌单详情
   toDetail = id => {
     Taro.navigateTo({ url: `/pages/disc-detail/disc-detail?id=${id}` })
   }
   // Taro.startPullDownRefresh()
 
-  handleClick = (item, key, e) => {
-    console.log('触发了点击', item, key, e)
+  // 显示弹窗
+  showModal(delDiscId, key, e) {
     if (key === 0) return
     this.setState({
-      showModal: true
+      showModal: true,
+      delDiscId
+    })
+  }
+
+  // 确定删除
+  modalConfirm(e) {
+    console.log('确定删除', this.state.delDiscId)
+    this.setState({
+      showModal: false
+    })
+  }
+
+  // 取消删除
+  modalCancel(e) {
+    console.log('取消删除', e)
+    this.setState({
+      showModal: false
     })
   }
 
@@ -106,7 +132,7 @@ export default class Index extends Component {
   }
 
   render() {
-    const { userCreatedDiscList, userFavoriteDiscList, showModal } = this.state
+    const { userCreatedDiscList, userFavoriteDiscList, showModal, hideAction } = this.state
 
     return (
       <View className='my'>
@@ -130,8 +156,8 @@ export default class Index extends Component {
         <View className='disc-title'>我创建的歌单</View>
         <View className='disc-list'>
           {userCreatedDiscList.map(item => (
-            <AtSwipeAction autoClose onClick={this.handleClick} key={item.id} options={this.actionOption}>
-              <View key={item.id} className='item' onClick={this.toDetail.bind(this, item.id)}>
+            <AtSwipeAction key={item.id} autoClose isClose={hideAction} onClick={this.showModal.bind(this, item.id)} options={this.actionOption}>
+              <View className='item' onClick={this.toDetail.bind(this, item.id)}>
                 <View className='image-wrapper'>
                   <Image src={item.coverImgUrl} alt='' lazy-load mode='widthFix' className='img' />
                 </View>
@@ -148,7 +174,7 @@ export default class Index extends Component {
         <View className='disc-title'>我收藏的歌单</View>
         <View className='disc-list'>
           {userFavoriteDiscList.map(item => (
-            <AtSwipeAction autoClose onClick={this.handleClick} key={item.id} options={this.actionOption}>
+            <AtSwipeAction autoClose onClick={this.showModal} key={item.id} options={this.actionOption}>
               <View key={item.id} className='item' onClick={this.toDetail.bind(this, item.id)}>
                 <View className='image-wrapper'>
                   <Image src={item.coverImgUrl} alt='' lazy-load mode='widthFix' className='img' />
@@ -165,7 +191,7 @@ export default class Index extends Component {
         </View>
 
         {/* Modal */}
-        <Modal />
+        <Modal isShow={showModal} onConfirm={this.modalConfirm} onCancel={this.modalCancel} content='确定要删除该歌单吗？' style='text-align:center' />
       </View>
     )
   }

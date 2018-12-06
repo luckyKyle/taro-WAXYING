@@ -14,7 +14,8 @@ export default class Index extends Component {
     navigationBarTitleText: '歌单'
   }
 
-  constructor() {
+  constructor(props) {
+    super(props)
     this.state = {
       loading: true, // 加载状态
       data: null, // 歌单数据

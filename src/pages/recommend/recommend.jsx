@@ -14,7 +14,8 @@ export default class Index extends Component {
     navigationBarTitleText: '推荐'
   }
 
-  constructor() {
+  constructor(props) {
+    super(props)
     this.state = {
       loading: true, // 加载状态
       banners: [], // banner列表

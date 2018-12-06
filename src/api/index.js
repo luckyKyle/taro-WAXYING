@@ -15,6 +15,7 @@ export default {
   getPersonalizedMv: params => fly.get('personalized/mv', params),
 
   // TODO 歌单
+  // 获取歌单详情
   getDiscDetail: params => fly.get('playlist/detail', params),
 
   // TODO 歌曲

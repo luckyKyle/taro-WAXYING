@@ -8,7 +8,8 @@ export default class Index extends Component {
   config = {
     navigationBarTitleText: '歌手详情'
   }
-  constructor() {
+  constructor(props) {
+    super(props)
     this.state = {
       mvList: []
     }
@@ -30,7 +31,7 @@ export default class Index extends Component {
 
   render() {
     return (
-      <View className="mv">
+      <View className='mv'>
         <MvList list={this.state.mvList} />
       </View>
     )
