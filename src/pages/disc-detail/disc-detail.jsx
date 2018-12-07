@@ -30,7 +30,7 @@ export default class Index extends Component {
 
   // 模糊背景
   blurryImg(img, blur = 15) {
-    return `background: url(${img});background-size: cover;background-position:center; filter: blur(${blur}px)`
+    return `background: url(${img});background-size: cover;background-position:center; filter: blur(${blur}px);box-shadow:inset -${blur}px -${blur}px 15px 0 rgba(0,0,0,.95)`
   }
 
   // 切换遮罩背景
@@ -56,7 +56,8 @@ export default class Index extends Component {
     const params = { id }
 
     // api.getUserPlayList
-    api.getDiscDetail(params)
+    api
+      .getDiscDetail(params)
       .then(res => {
         console.log(res.playlist)
         if (res.code === ERR_OK) {
@@ -66,10 +67,11 @@ export default class Index extends Component {
             data
           })
         }
-      }).then(res=>{
+      })
+      .then(res => {
         api.getUserPlayList().then(user => {
           console.log('this.state.data==>', this.state.data)
-          console.log(user.playlist.some(item=>item.id===this.state.data.id))
+          console.log(user.playlist.some(item => item.id === this.state.data.id))
           this.setState({
             // isSubscribed:user.playlist
           })

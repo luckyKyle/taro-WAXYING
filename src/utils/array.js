@@ -17,8 +17,7 @@ export const getProperties = (arr, prop) => arr.map(item => item[prop])
  * @returns 转换为大写['AAA','BBBB','CC']
  */
 export const arrToUpper = arr => {
-  if (!Array.isArray(arr) || !arr.every(item => typeof item === 'string'))
-    return
+  if (!Array.isArray(arr) || !arr.every(item => typeof item === 'string')) return
   return arr.map(item => item.toUpperCase())
 }
 
@@ -37,7 +36,7 @@ export const arrToFloat = (arr, keepCount = 2) => {
  * 生成指定范围随机数，返回数组
  * @param min 最小数(Number)
  * @param max 最大数(Number)
- * @param length 数组长度 (Array)
+ * @param length 数组长度 (Number)
  * @returns  [11,2562,133,11142]
  */
 export const getRadomNum = (min, max, length) => {
@@ -50,6 +49,24 @@ export const getRadomNum = (min, max, length) => {
     i++
   }
   return arr
+}
+
+/**
+ * 从数组返回指定长度的随机个对象
+ * @param arr 数组(Array)
+ * @param length 数组长度 (Number)
+ * @returns  getRadomObj([1,23,5,6,7],2) => [5,7]
+ */
+export const getRadomObj = (arr, length = 10) => {
+  let result = []
+  let count = arr.length
+  for (var i = 0; i < length; i++) {
+    var index = ~~(Math.random() * count) + i
+    result[i] = arr[index]
+    arr[index] = arr[i]
+    count--
+  }
+  return result
 }
 
 // 升降序切换

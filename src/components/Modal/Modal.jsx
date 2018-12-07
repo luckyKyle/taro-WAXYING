@@ -8,7 +8,6 @@ import '../../common/stylus/common/border.styl'
 export default class DiscList extends Component {
   static defaultProps = {
     title: '', //  标题
-    content: '', // 内容
     cancelText: '取消', // 取消文案
     confirmText: '确认', // 确认文案
     isShow: false // 默认隐藏
@@ -16,10 +15,8 @@ export default class DiscList extends Component {
 
   static propTypes = {
     title: PropTypes.oneOfType([PropTypes.string]),
-    content: PropTypes.oneOfType([PropTypes.string]),
     cancelText: PropTypes.oneOfType([PropTypes.string]),
     confirmText: PropTypes.oneOfType([PropTypes.string]),
-    options: PropTypes.oneOfType([PropTypes.array]),
     isShow: PropTypes.oneOfType([PropTypes.bool])
   }
 
@@ -51,7 +48,7 @@ export default class DiscList extends Component {
   }
 
   render() {
-    const { title, content, cancelText, confirmText, isShow, options } = this.props
+    const { title, cancelText, confirmText, isShow } = this.props
 
     return (
       <View className={`modal-wrapper ${isShow ? 'show' : ''}`}>
@@ -59,7 +56,7 @@ export default class DiscList extends Component {
           {/* 标题 */}
           {title.length ? <View className='modal-title border-bottom-1px'>{title}</View> : <View />}
           {/* 内容 */}
-          <View className='modal-content'>{content}</View>
+          <View className='modal-content'>{this.props.children}</View>
           {/* 按钮 */}
           <View className='modal-btns'>
             {/* 取消按钮 */}

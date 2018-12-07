@@ -34,12 +34,6 @@ export default class User extends Component {
 
   actionOption = [
     {
-      text: '取消',
-      style: {
-        backgroundColor: '#ccc'
-      }
-    },
-    {
       text: '确认',
       style: {
         backgroundColor: '#FF4949'
@@ -77,6 +71,7 @@ export default class User extends Component {
 
   // 显示弹窗
   showModal(delDiscId, key, e) {
+    console.log('key==', key)
     if (key === 0) return
     this.setState({
       showModal: true,
@@ -156,7 +151,7 @@ export default class User extends Component {
         <View className='disc-title'>我创建的歌单</View>
         <View className='disc-list'>
           {userCreatedDiscList.map(item => (
-            <AtSwipeAction key={item.id} autoClose isClose={hideAction} onClick={this.showModal.bind(this, item.id)} options={this.actionOption}>
+            <AtSwipeAction key={item.id} isClose={hideAction} onClick={this.showModal.bind(this, item.id)} options={this.actionOption}>
               <View className='item' onClick={this.toDetail.bind(this, item.id)}>
                 <View className='image-wrapper'>
                   <Image src={item.coverImgUrl} alt='' lazy-load mode='widthFix' className='img' />
@@ -191,7 +186,9 @@ export default class User extends Component {
         </View>
 
         {/* Modal */}
-        <Modal isShow={showModal} onConfirm={this.modalConfirm} onCancel={this.modalCancel} content='确定要删除该歌单吗？' style='text-align:center' />
+        <Modal isShow={showModal} onConfirm={this.modalConfirm} onCancel={this.modalCancel}>
+          <View>确定要删除该歌单吗？</View>
+        </Modal>
       </View>
     )
   }

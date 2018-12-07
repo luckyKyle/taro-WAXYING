@@ -6,6 +6,8 @@ import MvList from '../../components/MvList/MvList'
 import SongList from '../../components/SongList/SongList'
 import SearchBar from '../../components/SearchBar/SearchBar'
 
+import { getRadomObj } from '../../utils/array'
+
 import api from '../../api'
 import './main.styl'
 
@@ -27,6 +29,7 @@ export default class Index extends Component {
 
   componentDidMount() {
     this._fetchData()
+    // console.log(getRadomObj([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], 2))
   }
 
   // 角标颜色
@@ -53,7 +56,7 @@ export default class Index extends Component {
       Taro.hideLoading()
       this.setState({
         banners: data[0].banners,
-        discList: data[1].splice(0, 6),
+        discList: getRadomObj(data[1], 6),
         mvList: data[2],
         newsongList: data[3],
         loading: false
