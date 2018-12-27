@@ -22,6 +22,12 @@ export default {
   // 获取歌曲详情
   getSongDetail: params => fly.get('/song/detail', params),
 
+  // 获取歌曲地址
+  getSongUrl: params => fly.get('/song/url', params),
+
+  // 获取相似歌曲
+  getSimiSongs: params => fly.get('/simi/song', params),
+
   // TODO MV
   // 获取MV排行
   getMvList: params => fly.get('top/mv?limit=16&offset=1', params),
