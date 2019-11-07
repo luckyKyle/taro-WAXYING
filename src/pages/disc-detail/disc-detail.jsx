@@ -11,7 +11,7 @@ import './main.styl'
 
 export default class Index extends Component {
   config = {
-    navigationBarTitleText: '歌单'
+    navigationBarTitleText: '歌单',
   }
 
   constructor(props) {
@@ -20,7 +20,7 @@ export default class Index extends Component {
       loading: true, // 加载状态
       data: null, // 歌单数据
       showMask: false, //歌单信息遮罩
-      isSubscribed: false
+      isSubscribed: false,
     }
   }
 
@@ -36,7 +36,7 @@ export default class Index extends Component {
   // 切换遮罩背景
   toggleMask() {
     this.setState({
-      showMask: !this.state.showMask
+      showMask: !this.state.showMask,
     })
   }
 
@@ -64,7 +64,7 @@ export default class Index extends Component {
           Taro.hideLoading()
           const data = res.playlist
           this.setState({
-            data
+            data,
           })
         }
       })
@@ -81,39 +81,57 @@ export default class Index extends Component {
 
   render() {
     if (this.state.data === null) return
-    const { tracks, trackIds, trackCount, subscribed, subscribedCount, coverImgUrl, playCount, name, tags, creator, description } = this.state.data
+    const {
+      tracks,
+      trackIds,
+      trackCount,
+      subscribed,
+      subscribedCount,
+      coverImgUrl,
+      playCount,
+      name,
+      tags,
+      creator,
+      description,
+    } = this.state.data
 
     return (
       <View className={`disc-detail ${this.state.showMask ? 'fixed' : ''}`}>
         {/* 头部信息 */}
-        <View className='header border-bottom-1px'>
-          <View className='img-wrapper'>
-            <Image src={coverImgUrl} mode='widthFix' lazy-load className='img' />
-            <View className='count'>{parseLargeNumber(playCount)}</View>
-            <View className='iconfont icon-iconfontgantanhao2 info' onClick={this.toggleMask} />
+        <View className="header border-bottom-1px">
+          <View className="img-wrapper">
+            <Image src={coverImgUrl} mode="widthFix" lazy-load className="img" />
+            <View className="count">{parseLargeNumber(playCount)}</View>
+            <View className="iconfont icon-iconfontgantanhao2 info" onClick={this.toggleMask} />
           </View>
-          <View className='info-wrapper'>
-            <Text className='title'>{name}</Text>
+          <View className="info-wrapper">
+            <Text className="title">{name}</Text>
             {/* 标签 */}
-            <View className='creator'>
-              <Image mode='widthFix' src={creator.avatarUrl} className='avatar' />
-              <Text className='nickname'>{creator.nickname}</Text>
+            <View className="creator">
+              <Image mode="widthFix" src={creator.avatarUrl} className="avatar" />
+              <Text className="nickname">{creator.nickname}</Text>
             </View>
           </View>
-          <View className='blurry-bg' style={this.blurryImg(coverImgUrl)} />
+          <View className="blurry-bg" style={this.blurryImg(coverImgUrl)} />
         </View>
         {/* 遮罩 */}
         <View className={`mask ${this.state.showMask ? 'show' : ''}`}>
           {/* 关闭按钮 */}
-          <AtIcon value='close' size='22' color='#fff' className='mask-close' onClick={this.toggleMask} />
-          <View className='mask-content'>
-            <Image src={coverImgUrl} mode='widthFix' lazy-load className='mask-img' />
-            <View className='mask-name'>{name}</View>
+          <AtIcon
+            value="close"
+            size="22"
+            color="#fff"
+            className="mask-close"
+            onClick={this.toggleMask}
+          />
+          <View className="mask-content">
+            <Image src={coverImgUrl} mode="widthFix" lazy-load className="mask-img" />
+            <View className="mask-name">{name}</View>
             {tags.length ? (
-              <View className='mask-tags'>
+              <View className="mask-tags">
                 标签:
                 {tags.map((tag, index) => (
-                  <Text key={index} className='item'>
+                  <Text key={index} className="item">
                     {tag}
                   </Text>
                 ))}
@@ -121,16 +139,20 @@ export default class Index extends Component {
             ) : (
               <View />
             )}
-            <View className='mask-desc'>{description || ''}</View>
+            <View className="mask-desc">{description || ''}</View>
           </View>
-          <View className='blurry-bg' style={this.blurryImg(coverImgUrl, 30)} />
+          <View className="blurry-bg" style={this.blurryImg(coverImgUrl, 30)} />
         </View>
         {/* 列表 */}
-        <View className='song-bar border-bottom-1px'>
-          <View className='play-all' onClick={this.toPlaySong.bind(this, trackIds)}>
-            播放全部<Text className='total'>(共{trackCount}首)</Text>
+        <View className="song-bar border-bottom-1px">
+          <View className="play-all" onClick={this.toPlaySong.bind(this, trackIds)}>
+            播放全部<Text className="total">(共{trackCount}首)</Text>
           </View>
-          {subscribed ? <View>已收藏</View> : <View className='add-subscribed'>+收藏({parseLargeNumber(subscribedCount)})</View>}
+          {subscribed ? (
+            <View>已收藏</View>
+          ) : (
+            <View className="add-subscribed">+收藏({parseLargeNumber(subscribedCount)})</View>
+          )}
         </View>
         <SongList list={tracks} />
       </View>

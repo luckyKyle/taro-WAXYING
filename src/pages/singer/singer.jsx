@@ -10,7 +10,7 @@ import './main.styl'
 
 export default class Index extends Component {
   config = {
-    navigationBarTitleText: '歌手榜'
+    navigationBarTitleText: '歌手榜',
   }
 
   constructor(props) {
@@ -19,7 +19,7 @@ export default class Index extends Component {
       loading: true, // 加载状态
       updateTime: '', // 更新时间
       tipShow: false,
-      artists: [] //歌手列表
+      artists: [], //歌手列表
     }
   }
 
@@ -33,12 +33,13 @@ export default class Index extends Component {
 
   showTip() {
     this.setState({
-      tipShow: true
+      tipShow: true,
     })
   }
 
   // TAB_LIST = [{ title: '华语' }, { title: '欧美' }, { title: '韩国' }, { title: '日本' }]
-  tipText = '选取云音乐中热度最高的100名歌手，每天更新。热度由收藏歌手、歌手歌曲的播放、收藏、分享数量和歌手话题活跃情况综合计算。'
+  tipText =
+    '选取云音乐中热度最高的100名歌手，每天更新。热度由收藏歌手、歌手歌曲的播放、收藏、分享数量和歌手话题活跃情况综合计算。'
 
   // 获取所有榜单
   _fetchData() {
@@ -49,7 +50,7 @@ export default class Index extends Component {
         this.setState({
           artists,
           updateTime: timestampToTime(updateTime),
-          loading: false
+          loading: false,
         })
       }
     })
@@ -73,35 +74,39 @@ export default class Index extends Component {
 
   render() {
     return (
-      <View className='singer'>
+      <View className="singer">
         {/* 最近更新 */}
         {this.state.updateTime.length ? (
-          <View className='update-time' onClick={this.showTip}>
+          <View className="update-time" onClick={this.showTip}>
             最近更新:{this.state.updateTime}
           </View>
         ) : (
-          <View className='loading-wrapper'>
-            <AtActivityIndicator size={28} color='#d81e06' content='加载中...' mode='center' />
+          <View className="loading-wrapper">
+            <AtActivityIndicator size={28} color="#d81e06" content="加载中..." mode="center" />
           </View>
         )}
         {/*  提示 */}
         <AtToast isOpened={this.state.tipShow} hasMask text={this.tipText} />
         {/* 列表 */}
         {this.state.artists.map((artist, rank) => (
-          <View className='singer-item' key={artist.id} onClick={this.toDetail}>
-            <View className='rank'>
-              <Text className='ranking'>{rank + 1}</Text>
-              <View className='rise'>
-                <AtIcon value={this._riseIcon(artist.lastRank, rank).icon} size='10' color={this._riseIcon(artist.lastRank, rank).color} />
-                <Text className='text'>{this._rise(artist.lastRank, rank)}</Text>
+          <View className="singer-item" key={artist.id} onClick={this.toDetail}>
+            <View className="rank">
+              <Text className="ranking">{rank + 1}</Text>
+              <View className="rise">
+                <AtIcon
+                  value={this._riseIcon(artist.lastRank, rank).icon}
+                  size="10"
+                  color={this._riseIcon(artist.lastRank, rank).color}
+                />
+                <Text className="text">{this._rise(artist.lastRank, rank)}</Text>
               </View>
             </View>
-            <View className='avatar'>
+            <View className="avatar">
               <AtAvatar image={artist.img1v1Url} />
             </View>
-            <View className='content'>
-              <Text className='name'>{artist.name}</Text>
-              <Text className='score icon-huore iconfont'>{artist.score}</Text>
+            <View className="content">
+              <Text className="name">{artist.name}</Text>
+              <Text className="score icon-huore iconfont">{artist.score}</Text>
             </View>
           </View>
         ))}

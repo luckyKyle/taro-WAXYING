@@ -35,7 +35,7 @@ export default class Index extends Component {
   _fetchData() {
     Taro.showLoading({ title: '加载中' })
     const { id } = this.$router.params //歌单ID
-    let params = { ids: id }
+    let params = { ids: id || 299936 }
     // 获取歌曲详情
     api.getSongDetail(params).then(res => {
       if (res.code === ERR_OK) {
@@ -50,7 +50,7 @@ export default class Index extends Component {
       }
     })
     // 获取歌曲地址
-    params = { id }
+    params = { id: id || 551816010 }
     Promise.all([api.getSongUrl(params), api.getSimiSongs(params)]).then(res => {
       const currentSong = res[0][0]
       const simiSongs = res[1].songs
@@ -94,12 +94,10 @@ export default class Index extends Component {
     const { data, simiSongs } = this.state
     const { al } = data
 
-    console.log('rneder', simiSongs)
-
     return (
-      <View className='play'>
-        <View>
-          <Image src={al.picUrl} />
+      <View className="play">
+        <View className="head">
+          <Image src={al.picUrl} className="head_img" />
         </View>
         {simiSongs.length ? <SongList list={this.state.simiSongs} /> : ''}
       </View>

@@ -14,31 +14,31 @@ import avatar from './avatar1.jpg'
 
 export default class User extends Component {
   config = {
-    navigationBarTitleText: '我的'
+    navigationBarTitleText: '我的',
   }
 
   mainList = [
     {
       title: '最近播放',
-      icon: iconFoot
+      icon: iconFoot,
     },
     {
       title: '我的收藏',
-      icon: iconLike
+      icon: iconLike,
     },
     {
       title: '我的电台',
-      icon: iconFlash
-    }
+      icon: iconFlash,
+    },
   ]
 
   actionOption = [
     {
       text: '确认',
       style: {
-        backgroundColor: '#FF4949'
-      }
-    }
+        backgroundColor: '#FF4949',
+      },
+    },
   ]
 
   constructor(props) {
@@ -49,7 +49,7 @@ export default class User extends Component {
       hideAction: false, // 隐藏滑动按钮
       delDiscId: '',
       userFavoriteDiscList: [], // 用户收藏的歌单
-      userCreatedDiscList: [] // 用户创建的歌单
+      userCreatedDiscList: [], // 用户创建的歌单
     }
   }
 
@@ -59,7 +59,7 @@ export default class User extends Component {
 
   componentDidHide() {
     this.setState({
-      hideAction: true
+      hideAction: true,
     })
   }
 
@@ -75,7 +75,7 @@ export default class User extends Component {
     if (key === 0) return
     this.setState({
       showModal: true,
-      delDiscId
+      delDiscId,
     })
   }
 
@@ -83,7 +83,7 @@ export default class User extends Component {
   modalConfirm(e) {
     console.log('确定删除', this.state.delDiscId)
     this.setState({
-      showModal: false
+      showModal: false,
     })
   }
 
@@ -91,7 +91,7 @@ export default class User extends Component {
   modalCancel(e) {
     console.log('取消删除', e)
     this.setState({
-      showModal: false
+      showModal: false,
     })
   }
 
@@ -120,7 +120,7 @@ export default class User extends Component {
         this.setState({
           loading: false,
           userCreatedDiscList,
-          userFavoriteDiscList
+          userFavoriteDiscList,
         })
       }
     })
@@ -130,35 +130,41 @@ export default class User extends Component {
     const { userCreatedDiscList, userFavoriteDiscList, showModal, hideAction } = this.state
 
     return (
-      <View className='my'>
-        <View className='my-info-wrapper'>
-          <View className='my-info'>
-            <View className='user-avatar'>
-              <Image className='img' mode='widthFix' src={avatar} />
+      <View className="my">
+        <View className="my-info-wrapper">
+          <View className="my-info">
+            <View className="user-avatar">
+              <Image className="img" mode="widthFix" src={avatar} />
             </View>
-            <Text className='user-name'>KyleWang</Text>
+            <Text className="user-name">KyleWang</Text>
           </View>
         </View>
-        <View className='main-list'>
+        <View className="main-list">
           {this.mainList.map((item, index) => (
-            <View className='item' key={index}>
-              <Image src={item.icon} mode='aspectFit' className='icon' />
-              <View className='text border-bottom-1px'>{item.title}</View>
+            <View className="item" key={index}>
+              <Image src={item.icon} mode="aspectFit" className="icon" />
+              <View className="text border-bottom-1px">{item.title}</View>
             </View>
           ))}
         </View>
         {/* 创建的歌单 */}
-        <View className='disc-title'>我创建的歌单</View>
-        <View className='disc-list'>
+
+        {userCreatedDiscList.length ? <View className="disc-title">我创建的歌单</View> : ''}
+        <View className="disc-list">
           {userCreatedDiscList.map(item => (
-            <AtSwipeAction key={item.id} isClose={hideAction} onClick={this.showModal.bind(this, item.id)} options={this.actionOption}>
-              <View className='item' onClick={this.toDetail.bind(this, item.id)}>
-                <View className='image-wrapper'>
-                  <Image src={item.coverImgUrl} alt='' lazy-load mode='widthFix' className='img' />
+            <AtSwipeAction
+              key={item.id}
+              isClose={hideAction}
+              onClick={this.showModal.bind(this, item.id)}
+              options={this.actionOption}
+            >
+              <View className="item" onClick={this.toDetail.bind(this, item.id)}>
+                <View className="image-wrapper">
+                  <Image src={item.coverImgUrl} alt="" lazy-load mode="widthFix" className="img" />
                 </View>
-                <View className='desc-wrapper border-bottom-1px'>
-                  <Text className='text'>{item.name}</Text>
-                  <Text className='text count'>{item.trackCount}首</Text>
+                <View className="desc-wrapper border-bottom-1px">
+                  <Text className="text">{item.name}</Text>
+                  <Text className="text count">{item.trackCount}首</Text>
                 </View>
               </View>
             </AtSwipeAction>
@@ -166,17 +172,23 @@ export default class User extends Component {
         </View>
 
         {/* 收藏的歌单 */}
-        <View className='disc-title'>我收藏的歌单</View>
-        <View className='disc-list'>
+        {userFavoriteDiscList.length ? <View className="disc-title">我收藏的歌单</View> : ''}
+
+        <View className="disc-list">
           {userFavoriteDiscList.map(item => (
-            <AtSwipeAction autoClose onClick={this.showModal} key={item.id} options={this.actionOption}>
-              <View key={item.id} className='item' onClick={this.toDetail.bind(this, item.id)}>
-                <View className='image-wrapper'>
-                  <Image src={item.coverImgUrl} alt='' lazy-load mode='widthFix' className='img' />
+            <AtSwipeAction
+              autoClose
+              onClick={this.showModal}
+              key={item.id}
+              options={this.actionOption}
+            >
+              <View key={item.id} className="item" onClick={this.toDetail.bind(this, item.id)}>
+                <View className="image-wrapper">
+                  <Image src={item.coverImgUrl} alt="" lazy-load mode="widthFix" className="img" />
                 </View>
-                <View className='desc-wrapper border-bottom-1px'>
-                  <Text className='text'>{item.name}</Text>
-                  <Text className='text count'>
+                <View className="desc-wrapper border-bottom-1px">
+                  <Text className="text">{item.name}</Text>
+                  <Text className="text count">
                     {item.trackCount}首, by{item.creator.nickname}
                   </Text>
                 </View>

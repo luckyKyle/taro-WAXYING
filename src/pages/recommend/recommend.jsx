@@ -72,16 +72,15 @@ export default class Index extends Component {
   render() {
     const { banners, discList, mvList, newsongList } = this.state
 
-    console.log('sssss=>', newsongList)
     return (
-      <View className='recommend'>
+      <View className="recommend">
         <SearchBar />
         {/* 轮播 */}
-        <View className='swiper-wrapper'>
+        <View className="swiper-wrapper">
           <Swiper
-            className='swiper'
-            indicatorColor='rgba(255,255,255,.45)'
-            indicatorActiveColor='#d81e06'
+            className="swiper"
+            indicatorColor="rgba(255,255,255,.45)"
+            indicatorActiveColor="#d81e06"
             circular
             indicatorDots
             autoplay
@@ -89,11 +88,11 @@ export default class Index extends Component {
             {banners.map(item => {
               return (
                 <SwiperItem key={item.id}>
-                  <View className='image-wrapper'>
-                    <Text className='type-title' style={this.titleType(item.titleColor)}>
+                  <View className="image-wrapper">
+                    <Text className="type-title" style={this.titleType(item.titleColor)}>
                       {item.typeTitle}
                     </Text>
-                    <Image src={item.imageUrl} alt='' mode='aspectFill' className='img' />
+                    <Image src={item.imageUrl} alt="" mode="aspectFill" className="img" />
                   </View>
                 </SwiperItem>
               )
@@ -101,15 +100,15 @@ export default class Index extends Component {
           </Swiper>
         </View>
         {/* 推荐歌单 */}
-        <View className='title'>推荐歌单</View>
+        <View className="title">推荐歌单</View>
         <DiscList list={discList} />
 
         {/* 推荐MV */}
-        <View className='title'>推荐MV</View>
+        <View className="title">推荐MV</View>
         <MvList list={mvList} />
 
         {/* 新歌速递 */}
-        <View className='title'>新歌速递</View>
+        <View className="title">新歌速递</View>
         <SongList list={newsongList} />
       </View>
     )

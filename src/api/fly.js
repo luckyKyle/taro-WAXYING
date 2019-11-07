@@ -8,7 +8,7 @@ const fly = new Fly() // 创建fly实例
 export function showNormal(text) {
   Taro.showToast({
     title: text,
-    icon: 'none'
+    icon: 'none',
   })
 }
 
@@ -16,7 +16,13 @@ export function showNormal(text) {
 fly.interceptors.request.use((config, promise) => {
   Taro.showNavigationBarLoading()
   // 给所有请求添加自定义header
-  config.headers['X-Tag'] = 'flyio'
+  // config.headers['X-Tag'] = 'flyio'
+  config.headers = {
+    'X-Tag': 'flyio',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    source: 'miniApp',
+  }
+
   return config
 })
 
@@ -41,11 +47,11 @@ fly.interceptors.response.use(
   },
   (err, promise) => {
     // Do something with response error
-    console.log('拦截器错误消息：', err)
+    console.error('拦截器错误消息：', err)
     showNormal(err.message)
     Taro.hideNavigationBarLoading()
     promise.reject(err)
-  }
+  },
 )
 
 // 配置请求基地址
