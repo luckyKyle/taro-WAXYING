@@ -39,7 +39,7 @@
     "@tarojs/plugin-sass": "^1.2.0-beta.7",
     "@tarojs/plugin-stylus": "^1.3.22",
     "@tarojs/plugin-uglifyjs": "^1.3.22",
-    "@tarojs/webpack-runner": "^1.2.0-beta.3",
+    "@tarojs/webpack-runner": "^3.5.7",
     "@types/react": "^16.9.11",
     "@types/webpack-env": "^1.14.1",
     "babel-eslint": "^8.2.3",
